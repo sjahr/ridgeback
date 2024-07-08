@@ -1,19 +1,21 @@
-cmake_minimum_required(VERSION 3.0.2)
+cmake_minimum_required(VERSION 3.22)
 project(ridgeback_description)
 
-find_package(catkin REQUIRED COMPONENTS roslaunch)
+find_package(ament_cmake REQUIRED)
 
-catkin_package()
-
-install(DIRECTORY meshes launch urdf
-  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+install(
+  DIRECTORY
+    launch
+    meshes
+    scripts
+    urdf
+  DESTINATION
+    share/${PROJECT_NAME}
 )
 
-install(PROGRAMS scripts/env_run
-  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-)
-
-if(CATKIN_ENABLE_TESTING)
-  find_package(roslaunch REQUIRED)
-  roslaunch_add_file_check(launch/description.launch)
+if(BUILD_TESTING)
+  find_package(ament_lint_auto REQUIRED)
+  ament_lint_auto_find_test_dependencies()
 endif()
+
+ament_package()
