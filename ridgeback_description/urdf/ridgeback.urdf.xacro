@@ -328,7 +328,9 @@
   <!-- Optional standard accessories, including their simulation data. The rendering
        of these into the final description is controlled by optenv variables, which
        default each one to off.-->
+  <!-- Disabled by default. To avoid the need to always add https://github.com/clearpathrobotics/LMS1xx as a dependency.
   <xacro:include filename="$(find ridgeback_description)/urdf/accessories.urdf.xacro" />
+  -->
 
   <!-- Optional custom includes. -->
   <xacro:include filename="$(optenv RIDGEBACK_URDF_EXTRAS empty.urdf)" />
